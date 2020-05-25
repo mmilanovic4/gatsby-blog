@@ -1,0 +1,27 @@
+{
+	"name": "gatsby-blog",
+	"version": "1.0.0",
+	"description": "A simple boilerplate for creating Gatsby blogs.",
+	"author": {
+		"name": "Miloš Milanović",
+		"email": "mmilanovic016@gmail.com"
+	},
+	"scripts": {
+		"format": "prettier --write src/**/*.{js,jsx,css,json} package.json .prettierrc.json",
+		"dev": "gatsby develop -p 8000"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mmilanovic4/gatsby-blog.git"
+	},
+	"dependencies": {
+		"gatsby": "^2.22.9",
+		"gatsby-plugin-sass": "^2.3.2",
+		"node-sass": "^4.14.1",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"devDependencies": {
+		"prettier": "^2.0.5"
+	}
+}

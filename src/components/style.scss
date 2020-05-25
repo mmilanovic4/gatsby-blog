@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+@mixin golden-ratio($size) {
+	font-size: $size;
+	line-height: $size * 1.6;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+	@include golden-ratio(1rem);
+}
+
+.container {
+	max-width: 100%;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+header {
+	padding: 20px 0;
+}
+
+nav {
+	border-bottom: 1px solid #222;
+	border-top: 1px solid #222;
+	font-size: smaller;
+
+	ul {
+		list-style-type: none;
+		display: grid;
+		grid-auto-flow: column;
+		grid-gap: 0 10px;
+		justify-content: start;
+
+		li {
+			padding: 5px;
+
+			a {
+				&.active {
+					color: #069;
+				}
+			}
+		}
+	}
+}
+
+main {
+	margin: 20px 0;
+}
+
+footer {
+	font-size: smaller;
+	border-top: 1px solid #222;
+	font-style: italic;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+p {
+	text-align: justify;
+	padding: 10px 0;
+}
+
+h1 { @include golden-ratio(1.3rem) }
+h2 { @include golden-ratio(1.15rem) }
+h3 { @include golden-ratio(1rem) }
+
+@media screen and (max-width: 1000px) {
+	.container {
+		padding: 5px;
+	}
+}
