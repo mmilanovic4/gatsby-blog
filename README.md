@@ -6,6 +6,8 @@
 	<img src="https://img.shields.io/github/license/mmilanovic4/gatsby-blog" alt="License">
 </p>
 
+<p align="center" style="color: #f60; font-size: 32px">UNDER CONSTRUCTION</p>
+
 # Overview
 
 A simple boilerplate for creating blogs with GatsbyJS.

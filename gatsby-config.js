@@ -1,9 +1,19 @@
+const path = require('path');
+
 module.exports = {
 	siteMetadata: {
 		title: 'Gatsby Blog',
-		author: 'Miloš Milanović'
+		author: 'John Doe',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	},
 	plugins: [
-		'gatsby-plugin-sass'
+		'gatsby-plugin-sass',
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: path.resolve(__dirname, 'posts')
+			}
+		},
+		'gatsby-transformer-remark'
 	]
 };

@@ -7,8 +7,11 @@
 		"email": "mmilanovic016@gmail.com"
 	},
 	"scripts": {
-		"format": "prettier --write src/**/*.{js,jsx,css,json} package.json .prettierrc.json",
-		"dev": "gatsby develop -p 8000"
+		"clean": "gatsby clean",
+		"format": "prettier --write src/**/*.{js,jsx,css,json} *.{js,json} .prettierrc.json",
+		"build": "gatsby build",
+		"dev": "gatsby develop -p 8000",
+		"prod": "npm run-script build && gatsby serve"
 	},
 	"repository": {
 		"type": "git",
@@ -17,6 +20,8 @@
 	"dependencies": {
 		"gatsby": "^2.22.9",
 		"gatsby-plugin-sass": "^2.3.2",
+		"gatsby-source-filesystem": "^2.3.8",
+		"gatsby-transformer-remark": "^2.8.13",
 		"node-sass": "^4.14.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
