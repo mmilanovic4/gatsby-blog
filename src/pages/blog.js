@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
+import SEO from '../components/SEO';
 
 export default () => {
 	const {
@@ -31,6 +32,7 @@ export default () => {
 
 	return (
 		<MainWrapper>
+			<SEO title="Blog" />
 			<h2>Blog</h2>
 			<p>Here you can find all posts on this blog.</p>
 			{posts.length > 0 ? (

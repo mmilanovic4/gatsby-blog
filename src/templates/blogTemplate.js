@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
+import SEO from '../components/SEO';
 
 export default (props) => {
-	console.log(props);
 	const { data } = props;
 	const {
 		markdownRemark: {
@@ -15,6 +15,7 @@ export default (props) => {
 
 	return (
 		<MainWrapper>
+			<SEO title={title} />
 			<h2>{title}</h2>
 			<div className="post">
 				<div className="post-metadata">

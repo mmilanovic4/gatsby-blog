@@ -8,6 +8,7 @@ export default (props) => {
 		body,
 		postBodyComponents
 	} = props;
+
 	return (
 		<html {...htmlAttributes}>
 			<head>
@@ -21,7 +22,7 @@ export default (props) => {
 					key="body"
 					id="___gatsby"
 					dangerouslySetInnerHTML={{ __html: body }}
-				></div>
+				/>
 				{postBodyComponents}
 			</body>
 		</html>

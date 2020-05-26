@@ -14,6 +14,7 @@ module.exports = {
 				path: path.resolve(__dirname, 'posts')
 			}
 		},
-		'gatsby-transformer-remark'
+		'gatsby-transformer-remark',
+		'gatsby-plugin-react-helmet'
 	]
 };

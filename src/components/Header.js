@@ -18,12 +18,12 @@ export default ({ title, subtitle }) => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/blog" activeClassName="active">
+						<Link to="/blog/" activeClassName="active">
 							Blog
 						</Link>
 					</li>
 					<li>
-						<Link to="/contact" activeClassName="active">
+						<Link to="/contact/" activeClassName="active">
 							Contact
 						</Link>
 					</li>
