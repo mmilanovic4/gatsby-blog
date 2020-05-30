@@ -107,6 +107,25 @@ footer {
 	}
 }
 
+.social-networks {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+
+	a {
+		margin-right: 10px;
+
+		&:last-of-type {
+			margin-right: 0;
+			margin-left: auto;
+		}
+	}
+
+	img {
+		height: 24px;
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

@@ -7,7 +7,7 @@ import './style.scss';
 export default ({ children }) => {
 	const {
 		site: {
-			siteMetadata: { title, author, description }
+			siteMetadata: { title, author, description, socialNetworks }
 		}
 	} = useStaticQuery(SITE_METADATA);
 
@@ -17,7 +17,7 @@ export default ({ children }) => {
 			<main>
 				<section>{children}</section>
 			</main>
-			<Footer author={author} />
+			<Footer author={author} socialNetworks={socialNetworks} />
 		</div>
 	);
 };
@@ -29,6 +29,11 @@ const SITE_METADATA = graphql`
 				title
 				author
 				description
+				socialNetworks {
+					network
+					url
+					icon
+				}
 			}
 		}
 	}

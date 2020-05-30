@@ -24,7 +24,9 @@ export default (props) => {
 				</div>
 				<div className="post-tags">
 					{tags.map((tag) => (
-						<a key={tag} href={`/tags/${tag}`}>{tag}</a>
+						<a key={tag} href={`/tags/${tag}`}>
+							{tag}
+						</a>
 					))}
 				</div>
 				<div

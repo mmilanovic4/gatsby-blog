@@ -11,12 +11,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		'blogTemplate.js'
 	);
 
-	const tagComponent = path.resolve(
-		__dirname,
-		'src',
-		'templates',
-		'tags.js'
-	);
+	const tagComponent = path.resolve(__dirname, 'src', 'templates', 'tags.js');
 
 	const result = await graphql(ALL_MARKDOWN_REMARK);
 
@@ -26,7 +21,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	}
 
 	const {
-		data: { posts: { edges }, tags: { group } }
+		data: {
+			posts: { edges },
+			tags: { group }
+		}
 	} = result;
 
 	edges.forEach(({ node }) => {
