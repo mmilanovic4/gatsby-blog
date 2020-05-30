@@ -3,11 +3,18 @@ const path = require('path');
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { createPage } = actions;
 
-	const component = path.resolve(
+	const postComponent = path.resolve(
 		__dirname,
 		'src',
 		'templates',
 		'blogTemplate.js'
+	);
+
+	const tagComponent = path.resolve(
+		__dirname,
+		'src',
+		'templates',
+		'tags.js'
 	);
 
 	const result = await graphql(ALL_MARKDOWN_REMARK);
@@ -18,9 +25,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	}
 
 	const {
-		data: {
-			allMarkdownRemark: { edges }
-		}
+		data: { posts: { edges }, tags: { group } }
 	} = result;
 
 	edges.forEach(({ node }) => {
@@ -30,9 +35,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		createPage({
 			path,
-			component,
+			component: postComponent,
 			context: {
 				slug: path
+			}
+		});
+	});
+
+	group.forEach((tag) => {
+		const { fieldValue } = tag;
+
+		createPage({
+			path: `/tags/${fieldValue}`,
+			component: tagComponent,
+			context: {
+				tag: fieldValue
 			}
 		});
 	});
@@ -40,13 +57,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 const ALL_MARKDOWN_REMARK = `
 	query {
-		allMarkdownRemark {
+		posts: allMarkdownRemark {
 			edges {
 				node {
 					frontmatter {
 						slug
 					}
 				}
+			}
+		}
+		tags: allMarkdownRemark {
+			group(field: frontmatter___tags) {
+				fieldValue
 			}
 		}
 	}

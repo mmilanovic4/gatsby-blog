@@ -7,7 +7,7 @@ export default (props) => {
 	const { data } = props;
 	const {
 		markdownRemark: {
-			frontmatter: { title, date },
+			frontmatter: { title, date, tags },
 			html,
 			timeToRead
 		}
@@ -21,6 +21,11 @@ export default (props) => {
 				<div className="post-metadata">
 					<span>{date}</span>
 					<span>{timeToRead} min read</span>
+				</div>
+				<div className="post-tags">
+					{tags.map((tag) => (
+						<a key={tag} href={`/tags/${tag}`}>{tag}</a>
+					))}
 				</div>
 				<div
 					className="post-content"
@@ -38,6 +43,7 @@ export const pageQuery = graphql`
 			frontmatter {
 				title
 				date(formatString: "DD.MM.YYYY")
+				tags
 			}
 			html
 			timeToRead

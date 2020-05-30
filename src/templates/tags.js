@@ -1,12 +1,14 @@
 import React from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
 import SEO from '../components/SEO';
 
-export default () => {
+export default ({ data, pageContext }) => {
 	const {
 		allMarkdownRemark: { edges }
-	} = useStaticQuery(ALL_MARKDOWN_REMARK);
+	} = data;
+
+	const { tag } = pageContext;
 	const posts = edges.map((edge) => edge.node);
 
 	const renderPost = (post) => {
@@ -32,8 +34,8 @@ export default () => {
 
 	return (
 		<MainWrapper>
-			<SEO title="Blog" />
-			<h2>Blog</h2>
+			<SEO title={`Tagged with: ${tag}`} />
+			<h2>Tagged with: {tag}</h2>
 			<p>Here you can find all posts on this blog.</p>
 			{posts.length > 0 ? (
 				<div className="post-container">{posts.map(renderPost)}</div>
@@ -44,9 +46,12 @@ export default () => {
 	);
 };
 
-const ALL_MARKDOWN_REMARK = graphql`
-	query {
-		allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+export const pageQuery = graphql`
+	query($tag: String!) {
+		allMarkdownRemark(
+			sort: { order: DESC, fields: [frontmatter___date] }
+			filter: { frontmatter: { tags: { in: [$tag] } } }
+		) {
 			edges {
 				node {
 					id

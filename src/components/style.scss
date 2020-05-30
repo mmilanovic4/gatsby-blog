@@ -70,6 +70,7 @@ footer {
 	}
 
 	margin-bottom: 20px;
+
 	&:last-of-type {
 		margin-bottom: 0;
 	}
@@ -82,8 +83,27 @@ footer {
 		justify-content: start;
 	}
 
+	&-tags {
+		display: flex;
+		flex-direction: row;
+		margin-top: 10px;
+
+		& > a {
+			margin-right: 10px;
+			background-color: #069;
+			color: #fff;
+			padding: 0 5px;
+			border-radius: 5px;
+			font-size: small;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
 	&-content {
-		margin: 20px 0;
+		margin: 10px 0;
 	}
 }
 
