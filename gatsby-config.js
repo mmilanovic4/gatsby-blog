@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
 	siteMetadata: {
+		siteUrl: 'http://localhost:9000',
 		title: 'Gatsby Blog',
 		author: 'John Doe',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
@@ -15,6 +16,7 @@ module.exports = {
 			}
 		},
 		'gatsby-transformer-remark',
-		'gatsby-plugin-react-helmet'
+		'gatsby-plugin-react-helmet',
+		'gatsby-plugin-feed'
 	]
 };
