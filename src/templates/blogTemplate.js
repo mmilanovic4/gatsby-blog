@@ -25,7 +25,7 @@ export default (props) => {
 				<div className="post-tags">
 					{tags.map((tag) => (
 						<a key={tag} href={`/tags/${tag}`}>
-							{tag}
+							#{tag}
 						</a>
 					))}
 				</div>
@@ -34,7 +34,7 @@ export default (props) => {
 					dangerouslySetInnerHTML={{ __html: html }}
 				/>
 			</div>
-			<Link to="/">Back to home</Link>
+			<Link to="/"><small>Back to home</small></Link>
 		</MainWrapper>
 	);
 };

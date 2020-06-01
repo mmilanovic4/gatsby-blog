@@ -1,11 +1,43 @@
 ---
 title: "My second blog post"
 slug: "/blog/my-second-post"
-spoiler: "Lorem ipsum"
+spoiler: "Markdown cheatsheet"
 date: "2019-05-26"
-tags: ["webdev", "css-animations"]
+tags: ["webdev", "markdown", "cheatsheet"]
 ---
 
-Hello!
+# Header #1
 
-This is my second blog post.
+## Header #2
+
+### Header #3
+
+*italics*
+
+**bold**
+
+~~deleted~~
+
+Unordered:
+
+- ul #1
+- ul #2
+- ul #3
+
+Ordered:
+
+1. ol #1
+2. ol #2
+3. ol #3
+
+[Link to Google](https://www.google.com "Visit Google")
+
+Inline code: `<?php echo "Hi!";`
+
+```javascript
+const arr = [1, 2, 3];
+arr.push(4);
+console.log(arr);
+```
+
+> Blockquote
