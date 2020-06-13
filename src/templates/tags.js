@@ -36,7 +36,6 @@ export default ({ data, pageContext }) => {
 		<MainWrapper>
 			<SEO title={`Tagged with: ${tag}`} />
 			<h2>Tagged with: {tag}</h2>
-			<p>Here you can find all posts on this blog.</p>
 			{posts.length > 0 ? (
 				<div className="post-container">{posts.map(renderPost)}</div>
 			) : (

@@ -34,7 +34,9 @@ export default (props) => {
 					dangerouslySetInnerHTML={{ __html: html }}
 				/>
 			</div>
-			<Link to="/"><small>Back to home</small></Link>
+			<Link to="/">
+				<small>Back to home</small>
+			</Link>
 		</MainWrapper>
 	);
 };
