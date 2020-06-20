@@ -18,12 +18,12 @@
 		"url": "https://github.com/mmilanovic4/gatsby-blog.git"
 	},
 	"dependencies": {
-		"gatsby": "^2.23.3",
+		"gatsby": "^2.23.7",
 		"gatsby-plugin-feed": "^2.5.5",
 		"gatsby-plugin-react-helmet": "^3.3.4",
 		"gatsby-plugin-sass": "^2.3.4",
-		"gatsby-source-filesystem": "^2.3.11",
-		"gatsby-transformer-remark": "^2.8.15",
+		"gatsby-source-filesystem": "^2.3.12",
+		"gatsby-transformer-remark": "^2.8.17",
 		"node-sass": "^4.14.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
