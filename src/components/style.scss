@@ -87,6 +87,8 @@ footer {
 		display: flex;
 		flex-direction: row;
 		margin-top: 10px;
+		border-bottom: 1px solid #ff0;
+		border-top: 1px solid #ff0;
 
 		& > a {
 			margin-right: 10px;
