@@ -87,12 +87,17 @@ footer {
 		display: flex;
 		flex-direction: row;
 		margin-top: 10px;
-		border-bottom: 1px solid #ff0;
-		border-top: 1px solid #ff0;
 
 		& > a {
 			margin-right: 10px;
 			font-size: small;
+			border: 1px solid #222;
+			border-radius: 5px;
+			padding: 0 5px;
+
+			&:hover {
+				border-color: #069;
+			}
 
 			&:last-of-type {
 				margin-right: 0;
