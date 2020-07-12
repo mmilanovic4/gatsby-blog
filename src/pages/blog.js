@@ -3,10 +3,29 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
 import SEO from '../components/SEO';
 
+const allMarkdownRemarkQuery = graphql`
+	query {
+		allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+			edges {
+				node {
+					id
+					frontmatter {
+						title
+						slug
+						spoiler
+						date(formatString: "DD.MM.YYYY")
+					}
+					timeToRead
+				}
+			}
+		}
+	}
+`;
+
 export default () => {
 	const {
 		allMarkdownRemark: { edges }
-	} = useStaticQuery(ALL_MARKDOWN_REMARK);
+	} = useStaticQuery(allMarkdownRemarkQuery);
 	const posts = edges.map((edge) => edge.node);
 
 	const renderPost = (post) => {
@@ -43,22 +62,3 @@ export default () => {
 		</MainWrapper>
 	);
 };
-
-const ALL_MARKDOWN_REMARK = graphql`
-	query {
-		allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-			edges {
-				node {
-					id
-					frontmatter {
-						title
-						slug
-						spoiler
-						date(formatString: "DD.MM.YYYY")
-					}
-					timeToRead
-				}
-			}
-		}
-	}
-`;

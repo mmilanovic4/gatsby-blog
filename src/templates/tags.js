@@ -3,6 +3,28 @@ import { graphql, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
 import SEO from '../components/SEO';
 
+export const pageQuery = graphql`
+	query($tag: String!) {
+		allMarkdownRemark(
+			sort: { order: DESC, fields: [frontmatter___date] }
+			filter: { frontmatter: { tags: { in: [$tag] } } }
+		) {
+			edges {
+				node {
+					id
+					frontmatter {
+						title
+						slug
+						spoiler
+						date(formatString: "DD.MM.YYYY")
+					}
+					timeToRead
+				}
+			}
+		}
+	}
+`;
+
 export default ({ data, pageContext }) => {
 	const {
 		allMarkdownRemark: { edges }
@@ -44,25 +66,3 @@ export default ({ data, pageContext }) => {
 		</MainWrapper>
 	);
 };
-
-export const pageQuery = graphql`
-	query($tag: String!) {
-		allMarkdownRemark(
-			sort: { order: DESC, fields: [frontmatter___date] }
-			filter: { frontmatter: { tags: { in: [$tag] } } }
-		) {
-			edges {
-				node {
-					id
-					frontmatter {
-						title
-						slug
-						spoiler
-						date(formatString: "DD.MM.YYYY")
-					}
-					timeToRead
-				}
-			}
-		}
-	}
-`;

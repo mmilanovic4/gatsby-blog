@@ -4,25 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import './style.scss';
 
-export default ({ children }) => {
-	const {
-		site: {
-			siteMetadata: { title, author, description, socialNetworks }
-		}
-	} = useStaticQuery(SITE_METADATA);
-
-	return (
-		<div className="container">
-			<Header title={title} subtitle={description} />
-			<main>
-				<section>{children}</section>
-			</main>
-			<Footer author={author} socialNetworks={socialNetworks} />
-		</div>
-	);
-};
-
-const SITE_METADATA = graphql`
+const siteMetadataQuery = graphql`
 	query {
 		site {
 			siteMetadata {
@@ -38,3 +20,21 @@ const SITE_METADATA = graphql`
 		}
 	}
 `;
+
+export default ({ children }) => {
+	const {
+		site: {
+			siteMetadata: { title, author, description, socialNetworks }
+		}
+	} = useStaticQuery(siteMetadataQuery);
+
+	return (
+		<div className="container">
+			<Header title={title} subtitle={description} />
+			<main>
+				<section>{children}</section>
+			</main>
+			<Footer author={author} socialNetworks={socialNetworks} />
+		</div>
+	);
+};

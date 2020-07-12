@@ -3,10 +3,21 @@ import { graphql, useStaticQuery } from 'gatsby';
 import './style.scss';
 import { Helmet } from 'react-helmet';
 
+const siteMetadataQuery = graphql`
+	query {
+		site {
+			siteMetadata {
+				defaultTitle: title
+				defaultDescription: description
+			}
+		}
+	}
+`;
+
 export default (props) => {
 	const {
 		site: { siteMetadata }
-	} = useStaticQuery(SITE_METADATA);
+	} = useStaticQuery(siteMetadataQuery);
 	const { defaultTitle, defaultDescription } = siteMetadata;
 	const { title, description } = props;
 
@@ -21,14 +32,3 @@ export default (props) => {
 		</Helmet>
 	);
 };
-
-const SITE_METADATA = graphql`
-	query {
-		site {
-			siteMetadata {
-				defaultTitle: title
-				defaultDescription: description
-			}
-		}
-	}
-`;

@@ -3,6 +3,20 @@ import { graphql, Link } from 'gatsby';
 import MainWrapper from '../components/MainWrapper';
 import SEO from '../components/SEO';
 
+export const pageQuery = graphql`
+	query($slug: String!) {
+		markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+			frontmatter {
+				title
+				date(formatString: "DD.MM.YYYY")
+				tags
+			}
+			html
+			timeToRead
+		}
+	}
+`;
+
 export default (props) => {
 	const { data } = props;
 	const {
@@ -40,17 +54,3 @@ export default (props) => {
 		</MainWrapper>
 	);
 };
-
-export const pageQuery = graphql`
-	query($slug: String!) {
-		markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-			frontmatter {
-				title
-				date(formatString: "DD.MM.YYYY")
-				tags
-			}
-			html
-			timeToRead
-		}
-	}
-`;

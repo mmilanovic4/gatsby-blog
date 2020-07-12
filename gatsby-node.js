@@ -1,6 +1,25 @@
 const path = require('path');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const allMarkdownRemarkQuery = `
+	query {
+		posts: allMarkdownRemark {
+			edges {
+				node {
+					frontmatter {
+						slug
+					}
+				}
+			}
+		}
+		tags: allMarkdownRemark {
+			group(field: frontmatter___tags) {
+				fieldValue
+			}
+		}
+	}
+`;
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { createPage } = actions;
 
@@ -13,7 +32,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const tagComponent = path.resolve(__dirname, 'src', 'templates', 'tags.js');
 
-	const result = await graphql(ALL_MARKDOWN_REMARK);
+	const result = await graphql(allMarkdownRemarkQuery);
 
 	if (result.errors) {
 		reporter.panicOnBuild('Error while running GraphQL query.');
@@ -53,25 +72,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 };
-
-const ALL_MARKDOWN_REMARK = `
-	query {
-		posts: allMarkdownRemark {
-			edges {
-				node {
-					frontmatter {
-						slug
-					}
-				}
-			}
-		}
-		tags: allMarkdownRemark {
-			group(field: frontmatter___tags) {
-				fieldValue
-			}
-		}
-	}
-`;
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	const { createNodeField } = actions;
